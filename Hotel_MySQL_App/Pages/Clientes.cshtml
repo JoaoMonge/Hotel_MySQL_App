@@ -1,0 +1,25 @@
+﻿@page
+@model Hotel_MySQL_App.Pages.ClientesModel
+@{
+}
+
+<h1>Clientes</h1>
+
+
+<table>
+    <tr>
+        <th>Nome Cliente</th>
+        <th>Numero Cliente</th>
+      
+    </tr>
+
+    @foreach (var item in Model.clientes)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.NomeCliente)</td>
+            <td>@Html.DisplayFor(modelItem => item.NumeroCliente)</td>
+           
+        </tr>
+    }
+</table>
+

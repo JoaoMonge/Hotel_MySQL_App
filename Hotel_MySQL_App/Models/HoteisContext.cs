@@ -22,7 +22,7 @@ public class HoteisContext
         return new MySqlConnection(ConnectionString);
     }
 
-
+    //Obter hoteis
     public List<Hotel> GetAllHotels()
     {
         List<Hotel> hotelsList = new List<Hotel>();
@@ -48,6 +48,33 @@ public class HoteisContext
         }
 
         return hotelsList;
+    }
+
+    //Obter Clientes
+    public List<Cliente> GetAllClientes()
+    {
+        List<Cliente> clientsList = new List<Cliente>();
+
+        using (MySqlConnection conn = GetConnection())
+        {
+            //Abrir a ligação
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Cliente", conn);
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    clientsList.Add(new Cliente()
+                    {
+                        NomeCliente = reader.GetString("Nome_Cliente"),
+                        NumeroCliente = reader.GetInt32("Numero_Cliente")
+                   
+                    });
+                }
+            }
+        }
+
+        return clientsList;
     }
 }
 
