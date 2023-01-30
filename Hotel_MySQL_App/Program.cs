@@ -1,4 +1,9 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿
+
+using Hotel_MySQL_App.Models;
+using MySql.Data.MySqlClient;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();

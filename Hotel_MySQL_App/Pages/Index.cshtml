@@ -1,11 +1,31 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewBag.Title = "Index";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
+<h2>Hotels</h2>
+<table class="table">
+    <tr>
+        <th>Sigla Hotel</th>
+        <th>Designacao</th>
+        <th>Localizacao</th>
+        <th>Created At</th>
+    </tr>
+    @foreach (var item in Model.Hotels)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sigla_Hotel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+        </tr>
+    }
+</table>

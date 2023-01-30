@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hotel_MySQL_App.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hotel_MySQL_App.Pages;
@@ -14,6 +15,8 @@ public class PrivacyModel : PageModel
 
     public void OnGet()
     {
+        
+
     }
 }
 

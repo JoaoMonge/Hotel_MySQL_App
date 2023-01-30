@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -10,7 +10,7 @@
   "profiles": {
     "Hotel_MySQL_App": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      "workingDirectory": "/Users/joaomonge/Projects/Hotel_MySQL_App/Hotel_MySQL_App",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5223",
       "environmentVariables": {
@@ -26,5 +26,3 @@
     }
   }
 }
-
-
