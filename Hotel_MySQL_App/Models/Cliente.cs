@@ -8,5 +8,8 @@ public class Cliente
     public string NomeCliente;
     public int NumeroCliente;
 
+   
+
+
 }
 

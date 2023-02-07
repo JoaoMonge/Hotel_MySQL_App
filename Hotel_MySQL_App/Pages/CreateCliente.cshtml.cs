@@ -8,27 +8,25 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hotel_MySQL_App.Pages
 {
-	public class CreateHotelModel : PageModel
+	public class CreateClienteModel : PageModel
     {
 
 
         public void OnGet()
         {
 
-           
 
         }
 
         public void OnPost()
         {
-            Hotel hotel = new Hotel();
-            hotel.Sigla_Hotel = Request.Form["sigla"];
-            hotel.Designacao = Request.Form["designacao"];
-            hotel.Localizacao = Request.Form["localizacao"];
+            Cliente client = new Cliente();
+            client.NomeCliente = Request.Form["nome"];
+            client.NumeroCliente = Int32.Parse(Request.Form["numero"]);
 
             HoteisContext context = new HoteisContext();
 
-            context.createHotel(hotel);
+            context.createCliente(client);
                 
 
             OnGet();

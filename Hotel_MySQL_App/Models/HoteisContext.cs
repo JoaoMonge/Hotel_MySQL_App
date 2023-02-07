@@ -33,7 +33,7 @@ public class HoteisContext
         {
             //Abrir a ligação
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Hotel", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Hotel;", conn);
             using (MySqlDataReader reader = cmd.ExecuteReader()) {
                 while (reader.Read())
                 {
@@ -44,7 +44,6 @@ public class HoteisContext
                         Localizacao = reader.GetString("Localizacao"),
                         CreatedAt = reader.GetDateTime("Created_At")
                     });
-                    Console.WriteLine(reader.GetString("Sigla_Hotel"));
                 }
             }
         }
@@ -61,7 +60,7 @@ public class HoteisContext
         {
             //Abrir a ligação
             conn.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Cliente", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Cliente;", conn);
             using (MySqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -147,6 +146,59 @@ public class HoteisContext
             conn.Close();
 
         }
+    }
+
+    //Operações CRUD - Create
+    public void createCliente(Cliente client)
+    {
+
+        using (MySqlConnection conn = GetConnection())
+        {
+            //Abrir a ligação
+            conn.Open();
+
+            //Query
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Cliente (Nome_Cliente,Numero_Cliente) VALUES (@nome,@numero);", conn);
+
+            cmd.Parameters.AddWithValue("nome", client.NomeCliente);
+            cmd.Parameters.AddWithValue("numero", client.NumeroCliente);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
+    }
+
+    // Exemplo Pesquisa
+    public List<Hotel> searchHotels(string designacao) {
+
+        List<Hotel> hotelsList = new List<Hotel>();
+
+        using (MySqlConnection conn = GetConnection())
+        {
+            //Abrir a ligação
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM Hotel WHERE Designacao LIKE CONCAT('%',@designacao,'%');", conn);
+            cmd.Parameters.AddWithValue("designacao", designacao);
+
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    hotelsList.Add(new Hotel()
+                    {
+                        Sigla_Hotel = reader.GetString("Sigla_Hotel"),
+                        Designacao = reader.GetString("Designacao"),
+                        Localizacao = reader.GetString("Localizacao"),
+                        CreatedAt = reader.GetDateTime("Created_At")
+                    });
+                    Console.WriteLine(reader.GetString("Sigla_Hotel"));
+                }
+            }
+        }
+
+        return hotelsList;
     }
 }
 

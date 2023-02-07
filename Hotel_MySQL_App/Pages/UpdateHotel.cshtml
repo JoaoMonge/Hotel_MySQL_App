@@ -3,9 +3,15 @@
 @{
 }
 
+
+<h2>Pesquise hotel por designação</h2>
+<form method="POST">
+    <input class="form-control" type="hidden" name="operacao" value="searchByDesignacao" />
+    <input class="form-control" type="text" name="Designacao" id="designacao" placeholder="Escreva a designacao a pesquisar" />
+    <input class="btn btn-primary" type="submit" value="Pesquisar" />
+</form>
+
 <h2>Update hotel</h2>
-
-
 <table class="table">
     <tr>
         <th>Sigla Hotel</th>
@@ -16,12 +22,13 @@
 
     @foreach (var item in Model.Hotels)
     {
+
         <tr>
             <form method="POST">
                 <input class="form-control" type="hidden" name="operacao" value="update" />
-                  
+
             <td>
-                <input class="form-control" type="text" id="sigla"  value="@Html.DisplayFor(modelItem => item.Sigla_Hotel)" disabled/>
+                <input class="form-control" type="text" id="sigla" value="@Html.DisplayFor(modelItem => item.Sigla_Hotel)" disabled />
             </td>
             <td>
                 <input class="form-control" type="text" id="designacao" name="Designacao" value="@Html.DisplayFor(modelItem => item.Designacao)" />
@@ -30,7 +37,7 @@
                 <input class="form-control" type="text" id="localizacao" name="Localizacao" value="@Html.DisplayFor(modelItem => item.Localizacao)" />
             </td>
             <td>
-                <input class="form-control" type="text" id="createdAt"  value="@Html.DisplayFor(modelItem => item.CreatedAt)" disabled/>
+                <input class="form-control" type="text" id="createdAt" value="@Html.DisplayFor(modelItem => item.CreatedAt)" disabled />
             </td>
             <td>
                 <input class="btn btn-success" type="submit" value="Gravar" />
@@ -45,7 +52,7 @@
                 </form>
             </td>
         </tr>
-      
+
     }
 </table>
 

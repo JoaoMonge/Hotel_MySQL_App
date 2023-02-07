@@ -1,28 +1,24 @@
 ﻿@page
-@model Hotel_MySQL_App.Pages.CreateHotelModel
+@model Hotel_MySQL_App.Pages.CreateClienteModel
 @{
 }
 
 
 
-<h2>Add a new hotel</h2>
+<h2>Add a new Client</h2>
 
 <div class="d-flex justify-content-center align-items-center">
 
     <form method="POST" style="width: 30vw;">
 
         <div class="form-group m-3">
-            <label for="sigla">Sigla Hotel</label>
-            <input type="text" class="form-control" name="sigla" id="sigla" placeholder="Insira a sigla do hotel" />
+            <label for="nome">Nome Cliente</label>
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Insira o nome do cliente" />
         </div>
         <div class="form-group m-3">
-            <label for="designacao">Designação</label>
-            <input type="text" class="form-control" id="designacao" name="Designacao" placeholder="Insira a designacao do hotel" />
-        </div>
-        <div class="form-group m-3">
-            <label for="localizacao">Localização</label>
-            <input type="text" class="form-control" id="localizacao" name="Localizacao" placeholder="Insira a localizacao do hotel" />
-        </div>
+            <label for="numero">Número cliente </label>
+            <input type="text" class="form-control" id="numero" name="numero" placeholder="Insira o número do cliente" />
+        </div
         <div class="d-flex justify-content-center m-3">
             <input class="btn btn-primary" type="submit" value="Criar" />
         </div>
