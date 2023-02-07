@@ -8,32 +8,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hotel_MySQL_App.Pages
 {
-	public class HotelsUpdateModel : PageModel
+	public class CreateHotelModel : PageModel
     {
-        public IEnumerable<Hotel> Hotels { get; set; }
 
 
         public void OnGet()
         {
 
-            HoteisContext context = new HoteisContext();
-            Hotels = context.GetAllHotels();
+           
 
         }
 
         public void OnPost()
         {
+            Hotel hotel = new Hotel();
+            hotel.Sigla_Hotel = Request.Form["sigla"];
+            hotel.Designacao = Request.Form["designacao"];
+            hotel.Localizacao = Request.Form["localizacao"];
+
             HoteisContext context = new HoteisContext();
 
-            if (Request.Form["operacao"].Equals("update"))
-            {
-                context.updateHotel(Request.Form["primaryKey"], Request.Form["Sigla_Hotel"], Request.Form["Designacao"], Request.Form["Localizacao"], Request.Form["CreatedAt"]);
-            }else if (Request.Form["operacao"].Equals("delete"))
-            {
-                context.deleteHotel(Request.Form["sigla"]);
-
-            }
-
+            context.createHotel(hotel);
+                
 
             OnGet();
         }

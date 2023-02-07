@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting.Server;
 using MySql.Data.MySqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Hotel_MySQL_App.Models;
 
@@ -22,6 +23,7 @@ public class HoteisContext
         return new MySqlConnection(ConnectionString);
     }
 
+    //Operações CRUD - READ
     //Obter hoteis
     public List<Hotel> GetAllHotels()
     {
@@ -75,6 +77,76 @@ public class HoteisContext
         }
 
         return clientsList;
+    }
+
+    //Operações CRUD - UPDATE
+    public void updateHotel(string primaryKey, string Sigla, string Designacao, string Localizacao, string createAt)
+    {
+
+        using (MySqlConnection conn = GetConnection())
+        {
+            //Abrir a ligação
+            conn.Open();
+
+            //Query
+            MySqlCommand cmd = new MySqlCommand("UPDATE Hotel SET Designacao=@designacao, Localizacao=@localizacao WHERE Sigla_Hotel = @sigla;", conn);
+
+            cmd.Parameters.AddWithValue("sigla", Sigla);
+            cmd.Parameters.AddWithValue("designacao", Designacao);
+            cmd.Parameters.AddWithValue("localizacao", Localizacao);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
+    }
+
+    //Operação CRUD - Delete
+    public void deleteHotel(string Sigla)
+    {
+
+        using (MySqlConnection conn = GetConnection())
+        {
+            //Abrir a ligação
+            conn.Open();
+
+            //Query
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Hotel WHERE Sigla_Hotel = @sigla;", conn);
+
+            cmd.Parameters.AddWithValue("sigla", Sigla);
+
+            if (cmd.ExecuteNonQuery() == 0)
+            {
+                throw new Exception("Não foi possível apagar");
+            }
+
+            conn.Close();
+
+        }
+    }
+
+    //Operações CRUD - Create
+    public void createHotel(Hotel hotel)
+    {
+
+        using (MySqlConnection conn = GetConnection())
+        {
+            //Abrir a ligação
+            conn.Open();
+
+            //Query
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Hotel (Sigla_Hotel,Designacao,Localizacao) VALUES (@sigla,@designacao,@localizacao);", conn);
+
+            cmd.Parameters.AddWithValue("sigla", hotel.Sigla_Hotel);
+            cmd.Parameters.AddWithValue("designacao", hotel.Designacao);
+            cmd.Parameters.AddWithValue("localizacao", hotel.Localizacao);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
     }
 }
 
