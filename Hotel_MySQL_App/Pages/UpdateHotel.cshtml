@@ -1,0 +1,27 @@
+﻿@page
+@model Hotel_MySQL_App.Pages.HotelsModel
+@{
+}
+
+<h1>Hotels</h1>
+
+
+<table>
+        <tr>
+            <th>Sigla Hotel</th>
+            <th>Designacao</th>
+            <th>Localizacao</th>
+            <th>Created At</th>
+        </tr>
+
+        @foreach( var item in Model.Hotels)
+{
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Sigla_Hotel)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Designacao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Localizacao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                </tr>
+}
+</table>
+
