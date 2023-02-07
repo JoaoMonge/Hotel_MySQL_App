@@ -3,10 +3,10 @@
 @{
 }
 
-<h1>Hotels</h1>
+<h2>Update hotel</h2>
 
 
-<table>
+<table class="table">
     <tr>
         <th>Sigla Hotel</th>
         <th>Designacao</th>
@@ -18,22 +18,22 @@
     {
         <tr>
             <form method="POST">
-                <input type="hidden" name="operacao" value="update" />
+                <input class="form-control" type="hidden" name="operacao" value="update" />
                   
             <td>
-                <input type="text" id="sigla"  value="@Html.DisplayFor(modelItem => item.Sigla_Hotel)" disabled/>
+                <input class="form-control" type="text" id="sigla"  value="@Html.DisplayFor(modelItem => item.Sigla_Hotel)" disabled/>
             </td>
             <td>
-                <input type="text" id="designacao" name="Designacao" value="@Html.DisplayFor(modelItem => item.Designacao)" />
+                <input class="form-control" type="text" id="designacao" name="Designacao" value="@Html.DisplayFor(modelItem => item.Designacao)" />
             </td>
             <td>
-                <input type="text" id="localizacao" name="Localizacao" value="@Html.DisplayFor(modelItem => item.Localizacao)" />
+                <input class="form-control" type="text" id="localizacao" name="Localizacao" value="@Html.DisplayFor(modelItem => item.Localizacao)" />
             </td>
             <td>
-                <input type="text" id="createdAt"  value="@Html.DisplayFor(modelItem => item.CreatedAt)" disabled/>
+                <input class="form-control" type="text" id="createdAt"  value="@Html.DisplayFor(modelItem => item.CreatedAt)" disabled/>
             </td>
             <td>
-                <input type="submit" value="Gravar" />
+                <input class="btn btn-success" type="submit" value="Gravar" />
             </td>
             </form>
             <td>
@@ -41,7 +41,7 @@
                     <input type="hidden" name="operacao" value="delete" />
                     <input type="hidden" name="sigla" id="sigla" value="@Html.DisplayFor(modelItem => item.Sigla_Hotel)" />
 
-                    <input type="submit" value="Apagar" />
+                    <input class="btn btn-danger" type="submit" value="Apagar" />
                 </form>
             </td>
         </tr>
